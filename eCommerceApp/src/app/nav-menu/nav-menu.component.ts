@@ -9,6 +9,6 @@ export class NavMenuComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    confirm('msg');
+    console.log('nav');
   }
 }

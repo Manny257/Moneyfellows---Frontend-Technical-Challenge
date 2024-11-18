@@ -1,0 +1,56 @@
+<ion-content>
+  <!-- Large Product Image -->
+  <div class="page-content">
+    <div class="product-images">
+      <img id="image-click-trigger" [src]="product.productImages[0]" alt="Product Image" (click)="openLightbox()" />
+      <div class="images-row">
+        <img *ngFor="let image of product.productImages" [src]="image" alt="Product Image" />
+      </div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="product-details">
+      <h3>{{product.manufacturer}}</h3>
+      <h1>{{product.productName}}</h1>
+      <p> {{product.details}} </p>
+      <h2 class="price"> {{product.priceAfterDiscount | currency : 'USD' }}
+        <span id="discount"> {{product.discount | percent}}</span>
+      </h2>
+      <p> {{product.originalPrice | currency : 'USD' }}</p>
+
+      <!-- Amount and Cart -->
+      <div class="amount-cart-container">
+        <div class="product-amount">
+          <ion-button color="light" (click)="decrementAmount()">
+            -
+          </ion-button>
+          <ion-input type="number" [(ngModel)]="productAmount"></ion-input>
+          <ion-button color="light" (click)="incrementAmount()">
+            +
+          </ion-button>
+        </div>
+        <div>
+          <ion-button class="add-to-cart-btn">
+            <ion-icon slot="start" name="cart-outline"></ion-icon>
+            Add to Cart
+          </ion-button>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <!-- PopOver -->
+  <ion-popover cssClass="popover-content" trigger="image-click-trigger" size="cover">
+    <ng-template>
+
+      <img [src]="product.productImages[0]" alt="Product Image" />
+      <div class="images-row">
+        <img *ngFor="let image of product.productImages" [src]="image" alt="Product Image" />
+      </div>
+
+    </ng-template>
+  </ion-popover>
+</ion-content>
