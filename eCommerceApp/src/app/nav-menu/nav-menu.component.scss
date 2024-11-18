@@ -1,0 +1,23 @@
+/* Hide navigation links on small screens and show on large screens */
+.nav-links {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+}
+
+/* Show hamburger menu on small screens and hide on large screens */
+.hamburger-menu {
+  display: flex;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+/* Style for navigation links */
+ion-button {
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
