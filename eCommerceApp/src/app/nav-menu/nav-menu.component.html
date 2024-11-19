@@ -1,5 +1,5 @@
 <!-- Side Menu for Small Screens -->
-<ion-menu side="start" menuId="main-menu" contentId="main-content">
+<!-- <ion-menu side="start" menuId="main-menu" contentId="main-content">
   <ion-header>
     <ion-toolbar>
       <ion-menu-toggle>
@@ -18,23 +18,23 @@
       <ion-item routerLink="/contact">Contact</ion-item>
     </ion-list>
   </ion-content>
-</ion-menu>
+</ion-menu> -->
 
 <!-- Top Navigation Bar -->
-<ion-header>
-  <ion-toolbar>
-    <!-- Hamburger Icon for Small Screens -->
-    <ion-buttons slot="start" class="hamburger-menu">
+<!-- <ion-header>
+  <ion-toolbar> -->
+<!-- Hamburger Icon for Small Screens -->
+<!-- <ion-buttons slot="start" class="hamburger-menu">
       <ion-menu-button menu="main-menu"></ion-menu-button>
-    </ion-buttons>
+    </ion-buttons> -->
 
-    <!-- App Title -->
-    <ion-title slot="start">
+<!-- App Title -->
+<!-- <ion-title slot="start">
       <ion-icon name="logo" size="large" class="app-icon"></ion-icon>
-    </ion-title>
+    </ion-title> -->
 
-    <!-- Navigation Links for Large Screens -->
-    <ion-title slot="start" class="nav-links">
+<!-- Navigation Links for Large Screens -->
+<!-- <ion-title slot="start" class="nav-links">
       <ion-buttons>
         <ion-button routerLink="/home">Collections</ion-button>
         <ion-button routerLink="/Men">Men</ion-button>
@@ -42,12 +42,30 @@
         <ion-button routerLink="/about">About</ion-button>
         <ion-button routerLink="/contact">Contact</ion-button>
       </ion-buttons>
-    </ion-title>
+    </ion-title> -->
 
-    <ion-avatar slot="end">
+<!-- <ion-avatar slot="end">
       <img alt="Silhouette of a person's head" src="assets/images/image-avatar.png" />
-    </ion-avatar>
+    </ion-avatar> -->
 
+<!-- </ion-toolbar>
+</ion-header> -->
 
-  </ion-toolbar>
-</ion-header>
+<header class="page-header">
+  <div class="nav-left-container">
+    <div>
+      <img alt="appLogo" src="assets/icons/logo.svg" />
+    </div>
+    <div class="nav-links">
+      <a href="/home"> Collection </a>
+      <a href="/home"> Men </a>
+      <a href="/home"> Women </a>
+      <a href="/home"> About </a>
+      <a href="/home"> Contact </a>
+    </div>
+  </div>
+  <div class="nav-right-container">
+    <img alt="Cart Icon" src="assets/icons/icon-cart.svg" />
+    <img id="avatar" alt="Avatar" src="assets/images/image-avatar.png" />
+  </div>
+</header>

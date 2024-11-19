@@ -32,7 +32,7 @@
               },
               {
                 "glob": "**/*.svg",
-                "input": "src/assets/icon",
+                "input": "src/assets/icons",
                 "output": "./svg"
               }
             ],

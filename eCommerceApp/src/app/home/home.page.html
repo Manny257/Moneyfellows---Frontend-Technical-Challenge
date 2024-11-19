@@ -1,11 +1,21 @@
 <ion-content>
-  <!-- Large Product Image -->
-  <div class="page-content">
+
+  <section class="page-content">
+    <!--Product Images -->
     <div class="product-images">
-      <img id="image-click-trigger" [src]="product.productImages[0]" alt="Product Image" (click)="openLightbox()" />
+      <img id="main-image" [src]="mainImage" alt="Product Image" (click)="openLightbox()" />
+
+      <button class="slider-btn left" (click)="showPreviousImg()"> <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+      <button class="slider-btn right" (click)="showNextImg()"> <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
+
+
       <div class="images-row">
-        <img *ngFor="let image of product.productImages" [src]="image" alt="Product Image" />
+        <img *ngFor="let image of product.productImages" (click)="thumbnailClicked(image)" [src]="image"
+          alt="Product Image" />
       </div>
+
     </div>
 
     <!-- Product Details -->
@@ -13,34 +23,37 @@
       <h3>{{product.manufacturer}}</h3>
       <h1>{{product.productName}}</h1>
       <p> {{product.details}} </p>
-      <h2 class="price"> {{product.priceAfterDiscount | currency : 'USD' }}
-        <span id="discount"> {{product.discount | percent}}</span>
-      </h2>
-      <p> {{product.originalPrice | currency : 'USD' }}</p>
+
+      <div class="price-container">
+        <div class="price">
+          {{product.priceAfterDiscount | currency : 'USD' }}
+
+          <span id="discount"> {{product.discount | percent}}</span>
+        </div>
+        <del> {{product.originalPrice | currency : 'USD' }}</del>
+
+      </div>
 
       <!-- Amount and Cart -->
       <div class="amount-cart-container">
         <div class="product-amount">
-          <ion-button color="light" (click)="decrementAmount()">
+          <button (click)="decrementAmount()">
             -
-          </ion-button>
-          <ion-input type="number" [(ngModel)]="productAmount"></ion-input>
-          <ion-button color="light" (click)="incrementAmount()">
+          </button>
+          <span>{{productAmount}}</span>
+          <button (click)="incrementAmount()">
             +
-          </ion-button>
+          </button>
         </div>
-        <div>
-          <ion-button class="add-to-cart-btn">
-            <ion-icon slot="start" name="cart-outline"></ion-icon>
-            Add to Cart
-          </ion-button>
-        </div>
+
+        <button class="add-to-cart-btn">
+          <ion-icon slot="start" name="cart-outline"></ion-icon>
+          Add to Cart
+        </button>
+
       </div>
-
-
     </div>
-
-  </div>
+  </section>
 
   <!-- PopOver -->
   <ion-popover cssClass="popover-content" trigger="image-click-trigger" size="cover">
@@ -53,4 +66,5 @@
 
     </ng-template>
   </ion-popover>
+
 </ion-content>

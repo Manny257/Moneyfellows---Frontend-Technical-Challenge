@@ -1,27 +1,70 @@
-/* Hide navigation links on small screens and show on large screens */
-.nav-links {
-  display: none;
+// /* Hide navigation links on small screens and show on large screens */
+// .nav-links {
+//   display: none;
 
-  @media (min-width: 768px) {
-    display: flex;
-  }
-}
+//   @media (min-width: 768px) {
+//     display: flex;
+//   }
+// }
 
-/* Show hamburger menu on small screens and hide on large screens */
-.hamburger-menu {
+// /* Show hamburger menu on small screens and hide on large screens */
+// .hamburger-menu {
+//   display: flex;
+
+//   @media (min-width: 768px) {
+//     display: none;
+//   }
+// }
+
+// /* Style for navigation links */
+// ion-button {
+//   --padding-start: 8px;
+//   --padding-end: 8px;
+// }
+
+// .app-icon{
+//   width: -webkit-fill-available;
+// }
+
+.page-header{
   display: flex;
-
-  @media (min-width: 768px) {
-    display: none;
-  }
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid hsla(220, 14%, 75%, 0.25);
+   padding: 1rem 1.5rem 2rem 1.5rem;
 }
 
-/* Style for navigation links */
-ion-button {
-  --padding-start: 8px;
-  --padding-end: 8px;
+
+.nav-right-container{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap:2rem
 }
 
-.app-icon{
-  width: -webkit-fill-available;
+#avatar{
+  width:3rem ;
+}
+
+.nav-left-container{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.nav-links{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+    a{
+      text-decoration: none;
+      color: hsl(219, 9%, 45%);
+      padding: 0 1rem;
+    }
+
+    @media (max-width:860px) {
+      display: none;
+
+    }
 }

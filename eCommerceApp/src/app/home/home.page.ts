@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  mainImage = '';
   product = {
     manufacturer: 'Sneakers Company',
     productName: 'Fall Limited Edition Sneakers',
@@ -21,11 +22,11 @@ export class HomePage implements OnInit {
     discount: 0.5,
     priceAfterDiscount: 125,
   };
-  productAmount: number = 0;
+  productAmount: number = 11;
   constructor() {}
 
   ngOnInit() {
-    console.log('hi');
+    this.mainImage = this.product.productImages[0];
   }
 
   openLightbox() {
@@ -38,5 +39,25 @@ export class HomePage implements OnInit {
 
   decrementAmount() {
     this.productAmount--;
+  }
+
+  thumbnailClicked(img: string) {
+    this.mainImage = img;
+  }
+
+  showPreviousImg() {
+    let currentIndex = this.product.productImages.indexOf(this.mainImage);
+    this.mainImage =
+      currentIndex > 0
+        ? this.product.productImages[currentIndex - 1]
+        : this.product.productImages[this.product.productImages.length - 1];
+  }
+
+  showNextImg() {
+    let currentIndex = this.product.productImages.indexOf(this.mainImage);
+    this.mainImage =
+      currentIndex < this.product.productImages.length - 1
+        ? this.product.productImages[currentIndex + 1]
+        : this.product.productImages[0];
   }
 }

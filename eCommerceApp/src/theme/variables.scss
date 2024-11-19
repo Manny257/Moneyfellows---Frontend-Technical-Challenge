@@ -1,10 +1,10 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
 @font-face {
-  font-family: AppFont;
+  font-family: appFont;
   src: url(https://fonts.gstatic.com/s/kumbhsans/v22/c4mP1n92AsfhuCq6tVsaoIx1LQICk0boNoq0SjlDfnzKo-bF3mdQkZYwir7vYko.woff2); //change url accordingly
   }
 
   :root {
-   --ion-font-family: AppFont;
+   --ion-font-family: appFont;
   }
