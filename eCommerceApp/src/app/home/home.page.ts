@@ -1,4 +1,4 @@
-import { Component, ComponentRef, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ModalController, ModalOptions } from '@ionic/angular';
 import { ImageSliderComponent } from '../image-slider/image-slider.component';
 import { DataService } from 'src/services/data.service';
