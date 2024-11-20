@@ -45,29 +45,17 @@ p{
   color: hsl(219, 9%, 45%);
 }
 
-// button{
-//   box-shadow:  1px 1rem 1.5rem rgba(0, 0, 0, 0.13);
-// }
-
-// .fit-modal {
-//   --width: auto; /* Let the modal width adapt */
-//   --height: auto; /* Let the modal height adapt */
-//   --min-width: 50%; /* Optional: minimum width for smaller screens */
-//   --max-width: 90%; /* Optional: prevent modal from being too wide */
-//   --border-radius: 12px; /* Optional: rounded corners */
-//   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow */
-// }
-
-// .fit-modal .modal-wrapper {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
 
 .fit-modal {
-  button{
-    display: inline;
+  .slider-btn#left{
+    display: block;
+    top:40%;
   }
+  .slider-btn#right{
+    display: block;
+    top:40%
+  }
+
   &::part(content){
    background-color: transparent;
    width: 31rem;

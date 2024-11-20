@@ -10,6 +10,7 @@ export class ImageSliderComponent implements OnInit {
   @Output() mainImageClicked = new EventEmitter();
 
   mainImage = '';
+  isActiveThumbnail = false;
 
   constructor() {}
 

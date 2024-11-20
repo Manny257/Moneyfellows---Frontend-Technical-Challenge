@@ -2,14 +2,15 @@
 <div class="product-images">
   <img id="main-image" [src]="mainImage" alt="Product Image" (click)="mainImgClicked()" />
 
-  <button class="slider-btn left" (click)="showPreviousImg()"> <ion-icon name="chevron-back-outline"></ion-icon>
+  <button id="left" class="slider-btn" (click)="showPreviousImg()"> <ion-icon name="chevron-back-outline"></ion-icon>
   </button>
-  <button class="slider-btn right" (click)="showNextImg()"> <ion-icon name="chevron-forward-outline"></ion-icon>
+  <button id="right" class="slider-btn" (click)="showNextImg()"> <ion-icon name="chevron-forward-outline"></ion-icon>
   </button>
 
 
   <div class="images-row">
-    <img *ngFor="let image of images" (click)="thumbnailClicked(image)" [src]="image" alt="Product Image" />
+    <img [class.active-img]="image === mainImage" *ngFor="let image of images" (click)="thumbnailClicked(image)"
+      [src]="image" alt="Product Image" />
   </div>
 
 </div>

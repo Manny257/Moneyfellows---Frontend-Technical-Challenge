@@ -1,16 +1,20 @@
 .product-images{
   max-width: 60rem;
-  min-width: 25rem;
-  margin-right: 4rem;
+  min-width: 20rem;
+  position:relative;
   @media (max-width:860px) {
     width: 100%;
     height: 100%;
-    position:relative;
   }
   .images-row{
     display: flex;
     margin: 5% 0;
     justify-content: space-around;
+    .active-img{
+      border: 3px solid hsl(25, 100%, 71%);
+      opacity: 40%;
+      background: white;
+    }
     @media (max-width:860px) {
       display: none;
     }
@@ -22,6 +26,7 @@
 
     &:hover{
       border: 3px solid hsl(25, 100%, 71%);
+      opacity: 40%;
     }
   }
 
@@ -35,11 +40,11 @@
   }
 }
 
-.left{
+#left{
   transform: translate(-50%, -50%);
   left: 10%;
 }
-.right{
+#right{
 transform: translate(50%, -50%);
 right: 10%;
 }
