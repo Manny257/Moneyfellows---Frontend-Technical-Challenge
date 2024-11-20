@@ -53,10 +53,12 @@
 
 <header class="page-header">
   <div class="nav-left-container">
-    <div>
-      <img alt="appLogo" src="assets/icons/logo.svg" />
-    </div>
-    <div class="nav-links">
+
+    <ion-icon name="menu-outline" class="side-menu-icon" (click)="openCloseMenu()"></ion-icon>
+    <img alt="appLogo" src="assets/icons/logo.svg" />
+
+    <div [class.nav-links]="!sideMenuOpen" [class.side-menu]="sideMenuOpen">
+      <ion-icon name="close-outline" (click)="openCloseMenu()" *ngIf="sideMenuOpen"></ion-icon>
       <a href="/home"> Collection </a>
       <a href="/home"> Men </a>
       <a href="/home"> Women </a>
@@ -65,7 +67,9 @@
     </div>
   </div>
   <div class="nav-right-container">
-    <img alt="Cart Icon" src="assets/icons/icon-cart.svg" />
+    <img alt="Cart Icon" src="assets/icons/icon-cart.svg" (click)="openCloseCart()" />
+    <span class="notification-badge" *ngIf="cartItemsCount > 0">{{ cartItemsCount }}</span>
+    <app-cart *ngIf="openCart"></app-cart>
     <img id="avatar" alt="Avatar" src="assets/images/image-avatar.png" />
   </div>
 </header>

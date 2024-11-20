@@ -1,22 +1,7 @@
 <ion-content>
 
   <section class="page-content">
-    <!--Product Images -->
-    <div class="product-images">
-      <img id="main-image" [src]="mainImage" alt="Product Image" (click)="openLightbox()" />
-
-      <button class="slider-btn left" (click)="showPreviousImg()"> <ion-icon name="chevron-back-outline"></ion-icon>
-      </button>
-      <button class="slider-btn right" (click)="showNextImg()"> <ion-icon name="chevron-forward-outline"></ion-icon>
-      </button>
-
-
-      <div class="images-row">
-        <img *ngFor="let image of product.productImages" (click)="thumbnailClicked(image)" [src]="image"
-          alt="Product Image" />
-      </div>
-
-    </div>
+    <app-image-slider [images]="product.productImages" (mainImageClicked)="openLightbox()"></app-image-slider>
 
     <!-- Product Details -->
     <div class="product-details">
@@ -46,7 +31,7 @@
           </button>
         </div>
 
-        <button class="add-to-cart-btn">
+        <button class="add-to-cart-btn" (click)="addToCart()">
           <ion-icon slot="start" name="cart-outline"></ion-icon>
           Add to Cart
         </button>
@@ -54,17 +39,5 @@
       </div>
     </div>
   </section>
-
-  <!-- PopOver -->
-  <ion-popover cssClass="popover-content" trigger="image-click-trigger" size="cover">
-    <ng-template>
-
-      <img [src]="product.productImages[0]" alt="Product Image" />
-      <div class="images-row">
-        <img *ngFor="let image of product.productImages" [src]="image" alt="Product Image" />
-      </div>
-
-    </ng-template>
-  </ion-popover>
 
 </ion-content>

@@ -1,0 +1,17 @@
+<div class="cart-container">
+
+  <h4 class="cart-header">Cart</h4>
+
+  <div class="cart-item" *ngIf="cartItem">
+    <img [src]="cartItem.thumbnail" alt="item thumbnail" />
+    <div>
+      <p> {{cartItem.itemName}}</p>
+      <p>{{cartItem.price}} x {{cartItem.count}} <b> {{cartItem.price * cartItem.count | currency:"USD"}} </b> </p>
+    </div>
+    <img (click)="emptyCart()" src="assets/icons/icon-delete.svg" />
+  </div>
+
+  <button *ngIf="cartItem" class="checkout-btn"> <b>Checkout</b></button>
+
+  <p id="cart-empty-text" *ngIf="!cartItem"> Your cart is empty</p>
+</div>

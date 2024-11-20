@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentRef, HostListener, OnInit } from '@angular/core';
+import { ModalController, ModalOptions } from '@ionic/angular';
+import { ImageSliderComponent } from '../image-slider/image-slider.component';
+import { DataService } from 'src/services/data.service';
+import { product } from 'src/models/product.model';
+import { shoppingItem } from 'src/models/shoppingItem.model';
 
 @Component({
   selector: 'app-home',
@@ -6,31 +11,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  mainImage = '';
-  product = {
-    manufacturer: 'Sneakers Company',
-    productName: 'Fall Limited Edition Sneakers',
-    details:
-      "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything weather offer.",
-    productImages: [
-      'assets/images/image-product-1.jpg',
-      'assets/images/image-product-2.jpg',
-      'assets/images/image-product-3.jpg',
-      'assets/images/image-product-4.jpg',
-    ],
-    originalPrice: 250,
-    discount: 0.5,
-    priceAfterDiscount: 125,
-  };
-  productAmount: number = 11;
-  constructor() {}
+  product!: product;
+  smallScreen: boolean = false;
+  productAmount: number = 0;
+  constructor(
+    private dataService: DataService,
+    private modalController: ModalController
+  ) {}
 
   ngOnInit() {
-    this.mainImage = this.product.productImages[0];
+    this.product = this.dataService.getProduct();
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    const width = (event.target as Window).innerWidth;
+    if (width < 860) {
+      this.modalController.getTop().then((modal) => {
+        if (modal) {
+          this.modalController.dismiss();
+        }
+      });
+      this.smallScreen = true;
+    } else {
+      this.smallScreen = false;
+    }
   }
 
-  openLightbox() {
-    console.log('img clicked');
+  async openLightbox() {
+    const modalOptions: ModalOptions = {
+      component: ImageSliderComponent,
+      componentProps: { images: this.product.productImages },
+      cssClass: 'fit-modal',
+    };
+    if (!this.smallScreen) {
+      const modalEl = await this.modalController.create(modalOptions);
+      await modalEl.present();
+    }
   }
 
   incrementAmount() {
@@ -38,26 +54,17 @@ export class HomePage implements OnInit {
   }
 
   decrementAmount() {
-    this.productAmount--;
+    this.productAmount =
+      this.productAmount == 0 ? this.productAmount : this.productAmount - 1;
   }
 
-  thumbnailClicked(img: string) {
-    this.mainImage = img;
-  }
-
-  showPreviousImg() {
-    let currentIndex = this.product.productImages.indexOf(this.mainImage);
-    this.mainImage =
-      currentIndex > 0
-        ? this.product.productImages[currentIndex - 1]
-        : this.product.productImages[this.product.productImages.length - 1];
-  }
-
-  showNextImg() {
-    let currentIndex = this.product.productImages.indexOf(this.mainImage);
-    this.mainImage =
-      currentIndex < this.product.productImages.length - 1
-        ? this.product.productImages[currentIndex + 1]
-        : this.product.productImages[0];
+  addToCart() {
+    const cartItem: shoppingItem = {
+      itemName: this.product.productName,
+      thumbnail: this.product.productImages[0],
+      count: this.productAmount > 0 ? this.productAmount : 1,
+      price: this.product.priceAfterDiscount,
+    };
+    this.dataService.cartItems.next(cartItem);
   }
 }
