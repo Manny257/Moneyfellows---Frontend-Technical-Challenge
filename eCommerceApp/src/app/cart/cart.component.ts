@@ -19,6 +19,6 @@ export class CartComponent implements OnInit {
   }
 
   emptyCart() {
-    this.dataService.cartItems.next(null);
+    this.dataService.removeCartItems();
   }
 }

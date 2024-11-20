@@ -9,7 +9,6 @@ import { shoppingItem } from 'src/models/shoppingItem.model';
 export class DataService {
   constructor() {}
 
-  cartItems = new BehaviorSubject<shoppingItem | null>(null);
   myProduct: product = {
     manufacturer: 'Sneakers Company',
     productName: 'Fall Limited Edition Sneakers',
@@ -26,7 +25,23 @@ export class DataService {
     priceAfterDiscount: 125,
   };
 
+  cartItems = new BehaviorSubject<shoppingItem | null>(this.getCartItems());
+
+  getCartItems() {
+    const Item = localStorage.getItem('cartItems');
+    if (Item) return JSON.parse(Item);
+  }
   getProduct() {
     return this.myProduct;
+  }
+
+  addCartItems(item: shoppingItem) {
+    localStorage.setItem('cartItems', JSON.stringify(item));
+    this.cartItems.next(item);
+  }
+
+  removeCartItems() {
+    localStorage.removeItem('cartItems');
+    this.cartItems.next(null);
   }
 }

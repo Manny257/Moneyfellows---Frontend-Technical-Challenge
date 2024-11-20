@@ -65,6 +65,6 @@ export class HomePage implements OnInit {
       count: this.productAmount > 0 ? this.productAmount : 1,
       price: this.product.priceAfterDiscount,
     };
-    this.dataService.cartItems.next(cartItem);
+    this.dataService.addCartItems(cartItem);
   }
 }
