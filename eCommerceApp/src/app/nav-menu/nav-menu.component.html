@@ -1,56 +1,3 @@
-<!-- Side Menu for Small Screens -->
-<!-- <ion-menu side="start" menuId="main-menu" contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-menu-toggle>
-        <ion-button fill="clear">
-          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
-        </ion-button>
-      </ion-menu-toggle>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-list>
-      <ion-item routerLink="/home">Collections</ion-item>
-      <ion-item routerLink="/men-page">Men</ion-item>
-      <ion-item routerLink="/women-page">Women</ion-item>
-      <ion-item routerLink="/about">About</ion-item>
-      <ion-item routerLink="/contact">Contact</ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu> -->
-
-<!-- Top Navigation Bar -->
-<!-- <ion-header>
-  <ion-toolbar> -->
-<!-- Hamburger Icon for Small Screens -->
-<!-- <ion-buttons slot="start" class="hamburger-menu">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
-    </ion-buttons> -->
-
-<!-- App Title -->
-<!-- <ion-title slot="start">
-      <ion-icon name="logo" size="large" class="app-icon"></ion-icon>
-    </ion-title> -->
-
-<!-- Navigation Links for Large Screens -->
-<!-- <ion-title slot="start" class="nav-links">
-      <ion-buttons>
-        <ion-button routerLink="/home">Collections</ion-button>
-        <ion-button routerLink="/Men">Men</ion-button>
-        <ion-button routerLink="/Women">Women</ion-button>
-        <ion-button routerLink="/about">About</ion-button>
-        <ion-button routerLink="/contact">Contact</ion-button>
-      </ion-buttons>
-    </ion-title> -->
-
-<!-- <ion-avatar slot="end">
-      <img alt="Silhouette of a person's head" src="assets/images/image-avatar.png" />
-    </ion-avatar> -->
-
-<!-- </ion-toolbar>
-</ion-header> -->
-
 <header class="page-header">
   <div class="nav-left-container">
 
@@ -59,11 +6,11 @@
 
     <div [class.nav-links]="!sideMenuOpen" [class.side-menu]="sideMenuOpen">
       <ion-icon name="close-outline" (click)="openCloseMenu()" *ngIf="sideMenuOpen"></ion-icon>
-      <a href="/home"> Collection </a>
-      <a href="/home"> Men </a>
-      <a href="/home"> Women </a>
-      <a href="/home"> About </a>
-      <a href="/home"> Contact </a>
+      <a href="./home"> Collection </a>
+      <a href="./home"> Men </a>
+      <a href="./home"> Women </a>
+      <a href="./home"> About </a>
+      <a href="./home"> Contact </a>
     </div>
   </div>
   <div class="nav-right-container">
